@@ -4,6 +4,12 @@
     
   }
 
+  .wrapper {
+    min-width: 98vw;
+  }
+.card-title {
+  font-size: .8rem;
+}
   .container {
     width: 90vw;
   }
@@ -25,7 +31,7 @@
       height: 100vh;
   }
 
-h3 {
+h3, h4 {
     color: white;
 }
 .display-4 {
@@ -35,10 +41,6 @@ font-size: 40px;
 font-weight: 600;
 padding-top: 10px;
 margin: 0 auto;
-}
-
-.todayblock {
-  width: 100vw;
 }
 
   /*UV INDEX COLORS */
