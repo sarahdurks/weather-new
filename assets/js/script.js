@@ -1,4 +1,22 @@
-//4204bfdd6f4f063ef67429ec56df1142 key
+//OPEN WEATHER CALLS
+// today weather
+let apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+
+//UV,  must define lat and lon
+            var lat = data.city.coord.lat;
+            var lon = data.city.coord.lon;
+         
+let apiUrl2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=4204bfdd6f4f063ef67429ec56df1142";
+
+// 5 day forecast
+ let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+
+
+
+          
+
+
+
 // main form
 formCity
 
