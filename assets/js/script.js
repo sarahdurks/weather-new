@@ -1,48 +1,73 @@
 
 // main form
-city-form
+formCity
 
- //past city searches
-cityButtons
+
+// city searched by user
+let cityInput = document.getElementById("city");
+ // past city searches
+let cityButtons = document.getElementById("cityButtons");
+
+// city searched by user
+let cityInput = document.getElementById("city");
+
 
 //today weather container
 weather-today
 
-      
-city-search
-todayDate
-todayIcon
-todayTemp
-todayHumidity
-todayWind
-todayUV
+
+searchedCity
+
+
+let todayDate = document.getElementById("todayDate");
+todayDate.textContent = moment().format("M/DD");
+
+/* today forecast information
+  document.getElementById("todayIcon").src = 
+    document.getElementById("todayTemp").innerHTML = 
+    document.getElementById("todayHumidity").innerHTML = 
+    document.getElementById("todayUV").innerHTML = */
+// UV add in classification with CSS 
+
+    //dates for 5 day forecast
+document.getElementById("day1").innerHTML = moment().add(1, "d").format("M/DD");
+document.getElementById("day2").innerHTML = moment().add(2, "d").format("M/DD");
+document.getElementById("day3").innerHTML = moment().add(3, "d").format("M/DD");
+document.getElementById("day4").innerHTML = moment().add(4, "d").format("M/DD");
+document.getElementById("day5").innerHTML = moment().add(5, "d").format("M/DD");
+
+// populate forecast5day container
+/*
+
+Need function to get and populate 5 day forecast
+    //1
+    document.getElementById("temperature1").innerHTML = 
+    document.getElementById("humidity1).innerHTML = 
+    icon1?
+    //2
+    document.getElementById("temperature2").innerHTML = 
+    document.getElementById("humidity2).innerHTML =
+    icon2?
+    //3
+    document.getElementById("temperature3").innerHTML = 
+    document.getElementById("humidity3).innerHTML =
+    icon3?
+    //4
+    document.getElementById("temperature4").innerHTML = 
+    document.getElementById("humidity4).innerHTML =
+    icon4?
+    //5
+    document.getElementById("temperature5").innerHTML = 
+    document.getElementById("humidity5).innerHTML =
+    icon5?
+
+
+*/
+
+
 
 //Forecast 5 container
 forecast5day
   
-day1
-icon1
-temperature1
-humidity1 
-  
-day2
-icon2
-temperature2
-humidity2
-             
-day3
-icon3
-temperature3
-humidity3
-              
-
-day4
-icon4
-temperature4
-humidity4
-
-day5
-icon5
-temperature5
-humidity5
-                     
+    
+// add event listeners last because they break everything if wrong
