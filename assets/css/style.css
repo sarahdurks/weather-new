@@ -1,12 +1,49 @@
 :root {
     
     font-family: "Montserrat", sans-serif !important;
+    color:#ffffff;
+    font-weight: 600;
     
   }
+.card {
+  background: rgba(15, 11, 11, 0.38); 
+  border-radius: 15px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1.8vh;
+  padding-right: 1vh;
+  margin: 3px;
+}
+.btn {
+  background-color: #9A67F9 !important;
+  color: white;
+  border-radius: 5px;
+  border: white;
+  width: fit-content;
+}
+.form-input {
+  max-width:8vw;
+}
 
-  .wrapper {
-    min-width: 98vw;
+.p {
+  font-size: smaller;
+}
+h3 {
+  margin-left: 1.2vw;
+  padding-top: .5vw;
+}
+ 
+  .col-sm-2 .card {
+    padding-top: 1vh;
   }
+.todayBlock {
+  margin-left: 1vw;
+  padding-left: 2vw;
+  display: flex;
+  flex-grow: inherit;
+ 
+}
+ 
 .card-title {
   font-size: .8rem;
 }
@@ -22,16 +59,13 @@
   min-height: 40vh;
 }
   body {
-  background: linear-gradient(
-        180deg,
-        rgba(116, 0, 186, 0.9) 0%,
-        rgba(62, 0, 164, 0.894469) 61.46%,
-        rgba(2, 0, 140, 0.9) 100%
-      ) !important;
+  background: 
+        linear-gradient(180deg, #FD986B 0%, #9A67F9 100%) !important;
+        background-repeat: no-repeat;
       height: 100vh;
   }
 
-h3, h4 {
+p, h3, h4, h5, h6 {
     color: white;
 }
 .display-4 {
@@ -51,7 +85,6 @@ span.high {
     color: white;
     border-radius: 5px;
   }
-  
   span.OK {
     padding: 4px;
     background-color: goldenrod;
