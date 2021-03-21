@@ -4,39 +4,48 @@
   font-weight: 600;
 }
 
+.navbar {
+  margin-bottom: 5vh;
+}
 .card {
   background: rgba(15, 11, 11, 0.38);
   border-radius: 15px;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  padding-left: 1.8vh;
-  padding-right: 1vh;
-  margin: 3px;
+  padding-left: 1vh;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
+
+
+.card-search {
+  margin-left: 4vw;
+  margin-right: 3vw;
+}
 img {
-  width:3vw;
+  width: 60px;
 
 }
 .btn {
   background-color: #9A67F9 !important;
   color: white;
   border-radius: 5px;
-  border: white;
+  border-color: white;
+  border: 1px;
   width: fit-content;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
-.form-input {
-  max-width: 8vw;
-}
 
 .p {
-  font-size: smaller;
+  font-size: x-small
 }
 
 h3 {
   margin-left: 1.2vw;
-  padding-top: .5vw;
+  margin-top: 1vh;
 }
 
 .col-sm-2 .card {
@@ -44,10 +53,8 @@ h3 {
 }
 
 .todayBlock {
-  margin-left: 1vw;
   padding-left: 2vw;
   display: flex;
-  flex-grow: inherit;
 }
 
 .card-title {
@@ -59,13 +66,21 @@ h3 {
 }
 
 .card-title {
-  text-align: center;
-  font-size: 1.2rem;
+
+  font-size: 1.1rem;
   font-weight: 600;
+}
+#formCity
+{max-width: fit-content;
+}
+.card-search {
+  min-width: fit-content;
 }
 
 .card5day {
-  min-height: 40vh;
+  height: fit-content;
+  font-size: .9rem;
+  margin-top: 2vh;
 }
 
 body {
@@ -93,20 +108,20 @@ h6 {
 }
 
 /*UV INDEX COLORS */
-.high {
+.severeLevel {
   padding: 4px;
   background-color: rgb(175, 30, 14);
   color: white;
   border-radius: 5px;
 }
 
-.ok {
+.moderateLevel {
   padding: 4px;
   background-color: goldenrod;
   border-radius: 5px;
 }
 
-.low {
+.favorableLevel {
   padding: 4px;
   background-color: rgb(21, 147, 21);
   color: white;

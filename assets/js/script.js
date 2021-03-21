@@ -1,172 +1,144 @@
+
+// TO DO: local storage/requery not working
+
 let cities = [];
 let cityName = document.querySelector("#searchedCity");
+let todayDate = document.getElementById("todayDate");
 let weatherForm = document.getElementById("formCity");
 let buttons = document.getElementById("buttons");
 let cityInput = document.getElementById("city");
-let todayDate = document.getElementById("todayDate");
-
 // Display Today's & Forecast Date
-todayDate.textContent = moment().format("M/DD");
-document.getElementById("day1").innerHTML = moment().add(1, "d").format("M/DD");
-document.getElementById("day2").innerHTML = moment().add(2, "d").format("M/DD");
-document.getElementById("day3").innerHTML = moment().add(3, "d").format("M/DD");
-document.getElementById("day4").innerHTML = moment().add(4, "d").format("M/DD");
-document.getElementById("day5").innerHTML = moment().add(5, "d").format("M/DD");
-
+todayDate.textContent = moment().format("M/DD/YYYY");
+document.getElementById("day1").innerHTML = moment().add(1, "d").format("M/DD/YYYY");
+document.getElementById("day2").innerHTML = moment().add(2, "d").format("M/DD/YYYY");
+document.getElementById("day3").innerHTML = moment().add(3, "d").format("M/DD/YYYY");
+document.getElementById("day4").innerHTML = moment().add(4, "d").format("M/DD/YYYY");
+document.getElementById("day5").innerHTML = moment().add(5, "d").format("M/DD/YYYY");
 // populate left rail with history of city search buttons if in local storage
-let pastCities = function()
-{cities = JSON.parse(localStorage.getItem("cities"));
-   if (!cities)
-   {cities = []
+let pastCities = function(){
+   cities = JSON.parse(localStorage.getItem("cities"));
+   if(!cities){
+      cities = []
    };
 };
-
 // Get weather for main display
 // My API Key: 4204bfdd6f4f063ef67429ec56df1142
-let getTodayWeather = function(city)
-{let apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
-   fetch(apiUrl1)
-      .then(function(response)
-      {response.json()
-            .then(function(data)
-            {showTodayWeather(data, city);
-            });
-      });
+let getWeather = (city) => {
+    var apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+    fetch(apiUrl1).then(function (response) {
+        response.json().then(function (data) {
+            showWeather(data, city);
+        });
+    });
 };
-
 // Get weather for 5-Day foercast
-let getForecast = function(city)
-{let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
-fetch(apiUrl3)
-   .then(function(response)
-   { showForecast(data, city);
-      // Get UV Data
-      let lat = data.city.coord.lat;
-      let lon = data.city.coord.lon;
-      let getTodayUV = function(city)
-      {let apiUrl2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=4204bfdd6f4f063ef67429ec56df1142";
-         fetch(apiUrl2)
-            .then(function(response)
-            {response.json()
-                  .then(function(data)
-                  {document.getElementById("todayUV")
-                        .innerHTML = data.value;
-                     if (data.value <= 3)
-                     {document.getElementById("todayUV").setAttribute("class", "low");}
-                     else if (data.value > 3 && data.value <= 7)
-                     { document.getElementById("todayUV").setAttribute("class", "ok");}
-                     else
-                     { document.getElementById("todayUV").setAttribute("class", "high");
-                     };
-                  });
-            });
-      };
-      getTodayUV();
-   });
+let getForecast = (city) => {
+    let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+    fetch(apiUrl3).then((response) => {
+        response.json().then((data) => {
+            showForecast(data, city);
+            let lat = data.city.coord.lat;
+            let lon = data.city.coord.lon;
+            let getTodayUV = (city) => {
+                let apiUrl2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=4204bfdd6f4f063ef67429ec56df1142";
+                fetch(apiUrl2).then((response) => {
+                    response.json().then((data) => {
+                        document.getElementById("todayUV").innerHTML = data.value;
+                        if (data.value <= 3) {
+                            document.getElementById("todayUV").setAttribute("class", "favorableLevel");
+                        } else if (data.value > 3 && data.value <= 7) {
+                            document.getElementById("todayUV").setAttribute("class", "moderateLevel");
+                        } else {
+                            document.getElementById("todayUV").setAttribute("class", "severeLevel");
+                        };
+                    });
+                });
+            };
+            getTodayUV();
+        });
+    });
 };
-
 // SUBMIT city search function
-// // trigger today's weather and 5 day forecast
-// // store (past) city search as button
-let submitQuery = function(event)
-{
-   event.preventDefault();
-   let cityName = cityInput.value.trim();
-   let buttonHistory = document.createElement("button");
-   buttonHistory.className = "history-buttons btn btn-default";
-   buttonHistory.innerHTML = cityName;
-   cityButtons.appendChild(buttonHistory);
-
-   pastCities();
-   if (!cities.includes(cityName) && (cityName != ""))
-   {cities.push(cityName);};
-   localStorage.setItem("cities", JSON.stringify(cities));
-   
-   if (cityName)
-   {cityInput.value = "";
-      getTodayWeather(cityName);
-      getForecast(cityName);
-   }
-   else
-   {alert("Enter a city name to get the weather!");
-   }
+let submitQuery = (event) => {
+    event.preventDefault();
+    var cityName = cityInput.value.trim();
+    var btn = document.createElement("button");
+    btn.className = "button-list btn btn-default";
+    btn.innerHTML = cityName;
+    buttons.appendChild(btn);
+    pastCities();
+    if (!cities.includes(cityName) && (cityName != "")) {
+        cities.push(cityName);
+    };
+    localStorage.setItem("cities", JSON.stringify(cities));
+    if (cityName) {
+        getWeather(cityName);
+        getForecast(cityName);
+        cityInput.value = "";
+    } else {
+        alert("Enter a city name to get the weather!");
+    }
+};
+// DISPLAY TODAY WEATHER
+let showWeather = (weather, searchQuery) => {
+    cityName.textContent = searchQuery;
+    iconEl = weather.weather[0].icon;
+    document.getElementById("todayIcon").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
+    document.getElementById("todayTemp").innerHTML = weather.main.temp;
+    document.getElementById("todayHumidity").innerHTML = weather.main.humidity;
+    document.getElementById("todayWind").innerHTML = weather.wind.speed;
 };
 
-//getTodayWeather >> showTodayWeather
-let showTodayWeather = function(weather, searchQuery)
-{
-   cityName.textContent = searchQuery;
-   iconEl = weather.weather[0].icon;
-   document.getElementById("todayIcon").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-   document.getElementById("todayTemp").innerHTML = weather.main.temp
-   document.getElementById("todayHumidity").innerHTML = weather.main.humidity;
+// DISPLAY 5 DAY FORECAST
+let showForecast = (forecast, searchQuery) => {
+    cityName.textContent = searchQuery;
+    // 1 of 5
+    document.getElementById("t1").innerHTML = forecast.list[1].main.temp;
+    document.getElementById("h1").innerHTML = forecast.list[1].main.humidity;
+    iconEl1 = forecast.list[1].weather[0].icon;
+    document.getElementById("i1").src = "https://openweathermap.org/img/w/" + iconEl1 + ".png";
+    // 2 of 5
+    document.getElementById("t2").innerHTML = forecast.list[9].main.temp;
+    document.getElementById("h2").innerHTML = forecast.list[9].main.humidity;
+    iconEl2 = forecast.list[9].weather[0].icon;
+    document.getElementById("i2").src = "https://openweathermap.org/img/w/" + iconEl2 + ".png";
+    // 3 of 5
+    document.getElementById("t3").innerHTML = forecast.list[17].main.temp;
+    document.getElementById("h3").innerHTML = forecast.list[17].main.humidity;
+    iconEl3 = forecast.list[17].weather[0].icon;
+    document.getElementById("i3").src = "https://openweathermap.org/img/w/" + iconEl3 + ".png";
+    // 4 of 5
+    document.getElementById("t4").innerHTML = forecast.list[25].main.temp;
+    document.getElementById("h4").innerHTML = forecast.list[25].main.humidity;
+    iconEl4 = forecast.list[25].weather[0].icon;
+    document.getElementById("i4").src = "https://openweathermap.org/img/w/" + iconEl4 + ".png";
+    // 5 of 5
+    document.getElementById("t5").innerHTML = forecast.list[33].main.temp;
+    document.getElementById("h5").innerHTML = forecast.list[33].main.humidity;
+    iconEl5 = forecast.list[33].weather[0].icon;
+    document.getElementById("i5").src = "https://openweathermap.org/img/w/" + iconEl5 + ".png";
 };
-// getForecast >> showForecast
-// populates 5 day container
-   let showForecast = function(forecast, searchQuery){
-      cityName.textContent = searchQuery;
-      // 1 of 5
-      document.getElementById("temperature1").innerHTML = forecast.list[1].main.temp;
-      document.getElementById("humidity1").innerHTML = forecast.list[1].main.humidity;
-      // icon related day 1
-       iconEl = forecast.list[1].weather[0].icon;
-         document.getElementById("icon1").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-         document.getElementById("icon1").setAttribute("alt", "weather-icon")
-      
-      // 2 of 5
-      document.getElementById("temperature2").innerHTML = forecast.list[9].main.temp;
-      document.getElementById("humidity2").innerHTML = forecast.list[9].main.humidity;
-      // icon related day 2
-       iconEl = forecast.list[9].weather[0].icon;
-         document.getElementById("icon2").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-         document.getElementById("icon2").setAttribute("alt", "weather-icon")
-      
-      // 3 of 5
-      document.getElementById("temperature3").innerHTML = forecast.list[17].main.temp;
-      document.getElementById("humidity3").innerHTML = forecast.list[17].main.humidity;
-      // icon related day 3
-       iconEl = forecast.list[x].weather[17].icon; 
-         document.getElementById("icon3").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-         document.getElementById("icon3").setAttribute("alt", "weather-icon")
-      
-      // 4 of 5
-      document.getElementById("temperature4").innerHTML = forecast.list[25].main.temp;
-      document.getElementById("humidity4").innerHTML = forecast.list[25].main.humidity;
-      // icon related day 4
-       iconEl = forecast.list[25].weather[0].icon;
-         document.getElementById("icon4").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-         document.getElementById("icon4").setAttribute("alt", "weather-icon")
-      
-      // 5 of 5
-      document.getElementById("temperature5").innerHTML = forecast.list[33].main.temp;
-      document.getElementById("humidity5").innerHTML = forecast.list[33].main.humidity;
-      // icon related day 5
-       iconEl = forecast.list[33].weather[0].icon;
-         document.getElementById("icon5").src = "https://openweathermap.org/img/w/" + iconEl + ".png";
-         document.getElementById("icon5").setAttribute("alt", "weather-icon")
-   };
-   //past search history requery option
-   let createButtonHistory = function(){
-      for (var i = 0;i < cities.length;i++) {
-      let buttonHistory = document.createElement("button"); 
-      
-      buttonHistory.className = "history-buttons btn btn-default"
-      buttonHistory.innerHTML = cities[i] 
-      buttons.appendChild(buttonHistory);
-   };
-   //past search history list
-   let cityButtons = document.querySelectorAll(".history-buttons");
-   for (var i = 0; i < cityButtons.length; i++)
-   {cityButtons[i].addEventListener("click", function(event)
-      {
-         getTodayWeather(event.target.textContent);
-         getForecast(event.target.textContent);
-      })
-   }
+
+//past search history requery option
+let addButtonList = () => {
+    for (var i = 0; i < cities.length; i++) {
+        let btn = document.createElement("button");
+        btn.className = "button-list btn btn-default";
+        btn.innerHTML = cities[i];
+        buttons.appendChild(btn);
+    };
+    //past search history list
+    let cityButtons = document.querySelectorAll("button-list");
+    for (var i = 0; i < cityButtons.length; i++) {
+        cityButtons[i].addEventListener("click", (event) => {
+                getWeather(event.target.textContent);
+                getForecast(event.target.textContent);
+            });
+    }
 };
+// on submission of form, fire off API calls
 weatherForm.addEventListener("submit", submitQuery);
-//load w data
-createButtonHistory;
 pastCities;
-getTodayWeather("Oakland");
-getForecast("Oakland");
+addButtonList;
+getWeather("Berkeley");
+getForecast("Berkeley");
