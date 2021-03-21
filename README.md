@@ -21,7 +21,7 @@ See live application [here]()
 - [x] OpenWeatherAPI
 - [x] Google Fonts
 
-Complete 🌞
+#### Complete 🌞
 - Users can query a city and see the day's forecast, in addition to the 5 day forecast that follows
 - Temperature, Humidity, Wind Speed, and UV Index information are all pulled in from the OpenWeatherAPI
 - Recent searches are stored and a user can again select a past search to see current information
@@ -29,7 +29,7 @@ Complete 🌞
 - Color coding and icons make the application data easier to interpret
 
 
-Pending 🌈
+#### Enhancements Pending 🌈
 
 - Adding nice icons
 - Modal instead of alert for improper input + no blank button display
@@ -78,4 +78,4 @@ Pending 🌈
 - [Fetch the Weather with OpenWeatherMap API and JavaScript](https://bithacker.dev/fetch-weather-openweathermap-api-javascript)     
 - 
 ### Additional Documents & Links 🌧️      
-- [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/}
+- [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
