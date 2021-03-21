@@ -1,10 +1,11 @@
 // DEFINE KEY ITEMS
 let cityInput = document.getElementById("city");
-let cityName = document.querySelector("#searchedCity");
 let cities = []; // build list for local storage in empty array
 let todayDate = document.getElementById("todayDate");
 let weatherForm = document.getElementById("formCity");
 let buttons = document.getElementById("buttons"); // buttons past search
+let cityName = document.querySelector("#searchedCity");
+
 // DATES
 // INITIAL DATE
 todayDate.textContent = moment()
@@ -37,6 +38,7 @@ let listCity = () => {
     cities = [];
   };
 };
+
 // GET WEATHER FOR TODAY DISPLAY
 // My API Key: 4204bfdd6f4f063ef67429ec56df1142
 let getWeather = (city) => {
@@ -50,6 +52,7 @@ let getWeather = (city) => {
         });
     });
 };
+
 // GET 5-DAY FORECAST + UV DATA
 let getForecast = (city) => {
   let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
@@ -89,6 +92,7 @@ let getForecast = (city) => {
         });
     });
 };
+
 // SUBMIT CITY SEARCH AND STORE CITY SEARCH
 // submitQuery => listCity, getWeather, getForecast
 let submitQuery = (event) => {
@@ -125,6 +129,7 @@ let showWeather = (weather, searchQuery) => {
   document.getElementById("todayWind")
     .innerHTML = weather.wind.speed;
 };
+
 // DISPLAY 5 DAY FORECAST
 // getForecast => showForecast
 let showForecast = (forecast, searchQuery) => {
@@ -171,6 +176,7 @@ let showForecast = (forecast, searchQuery) => {
     .src = "https://openweathermap.org/img/w/" + iconEl5 + ".png";
   // end 5 day Forecast
 };
+
 // ADD BUTTONS TO SEARCH HISTORY
 let addList = () => {
   for(var i = 0; i < cities.length; i++) {
@@ -179,6 +185,7 @@ let addList = () => {
     btn.innerHTML = cities[i];
     buttons.appendChild(btn);
   };
+
   // USE PAST SEARCH BUTTON
   let listButtons = document.querySelectorAll(".history-list");
   for(var i = 0; i < listButtons.length; i++) {
@@ -188,11 +195,13 @@ let addList = () => {
     })
   }
 };
+
 // LISTEN FOR CITY FORM SUBMISSION
 // listen => submitQuery
 weatherForm.addEventListener("submit", submitQuery);
 listCity();
 addList();
+
 // OPEN WITH DEFAULT VALUES
 getWeather("Berkeley");
 getForecast("Berkeley");
