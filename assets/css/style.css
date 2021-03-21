@@ -85,7 +85,7 @@ h3 {
 .card5day {
   height: fit-content;
   font-size: .9rem;
-  margin-top: 2vh;
+  margin-top: .2vh;
 }
 
 body {
@@ -136,9 +136,4 @@ h6 {
 }
 #formCity {
   max-width: fit-content;
-}
-.card5day {
-  height: fit-content;
-  font-size: .9rem;
-  margin-top: 2vh;
 }
