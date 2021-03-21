@@ -41,8 +41,9 @@ img {
   margin-bottom: 1vh;
 }
 
-.p {
-  font-size: x-small;
+p {
+  font-size: small;
+  line-height: 1em;
 }
 
 h3 {

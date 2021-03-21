@@ -136,23 +136,23 @@ let showWeather = (weather, searchQuery) => {
 document.getElementById("day1")
   .innerHTML = moment()
   .add(1, "d")
-  .format("M/DD");
+  .format("MMMM Do");
 document.getElementById("day2")
   .innerHTML = moment()
   .add(2, "d")
-  .format("M/DD");
+  .format("MMMM Do");
 document.getElementById("day3")
   .innerHTML = moment()
   .add(3, "d")
-  .format("M/DD");
+  .format("MMMM Do");
 document.getElementById("day4")
   .innerHTML = moment()
   .add(4, "d")
-  .format("M/DD");
+  .format("MMMM Do");
 document.getElementById("day5")
   .innerHTML = moment()
   .add(5, "d")
-  .format("M/DD");
+  .format("MMMM Do");
 
 
 // getForecast (API Call) => showForecast
