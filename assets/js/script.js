@@ -78,7 +78,7 @@ let getForecast = (city) => {
                     if(data.value <= 3) {
                       document.getElementById("todayUV")
                         .setAttribute("class", "favorableLevel");
-                    } else if(data.value > 3 && data.value <= 7) {
+                    } else if(data.value > 3 && data.value <= 10) {
                       document.getElementById("todayUV")
                         .setAttribute("class", "moderateLevel");
                     } else { 
