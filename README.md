@@ -80,3 +80,4 @@ See live application [here]()
 
 ### Additional Documents & Links 🌧️      
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+- [Iconscout SVG resources](https://iconscout.com/)
