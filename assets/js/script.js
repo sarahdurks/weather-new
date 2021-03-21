@@ -6,38 +6,7 @@ let cityForm = document.getElementById("formCity"); // form for input
 let buttons = document.getElementById("buttons"); // buttons past search
 let cityEl = document.querySelector("#searchedCity"); // city as displayed
 
-// DATES
-// INITIAL DATE
-todayDate.textContent = moment()
-  .format("M/DD/YYYY");
-// FORECAST DATES
-document.getElementById("day1")
-  .innerHTML = moment()
-  .add(1, "d")
-  .format("M/DD");
-document.getElementById("day2")
-  .innerHTML = moment()
-  .add(2, "d")
-  .format("M/DD");
-document.getElementById("day3")
-  .innerHTML = moment()
-  .add(3, "d")
-  .format("M/DD");
-document.getElementById("day4")
-  .innerHTML = moment()
-  .add(4, "d")
-  .format("M/DD");
-document.getElementById("day5")
-  .innerHTML = moment()
-  .add(5, "d")
-  .format("M/DD");
-// PAST CITY SEARCHES
-let listCity = () => {
-  citiesList = JSON.parse(localStorage.getItem("citiesList"));
-  if(!citiesList) {
-    citiesList = [];
-  };
-};
+// API CALLS
 
 // GET WEATHER FOR TODAY DISPLAY
 // My API Key: 4204bfdd6f4f063ef67429ec56df1142
@@ -94,6 +63,7 @@ let getForecast = (city) => {
 };
 
 // SUBMIT CITY SEARCH AND STORE CITY SEARCH
+
 // submitQuery => listCity, getWeather, getForecast
 let submitQuery = (event) => {
   event.preventDefault();
@@ -115,8 +85,40 @@ let submitQuery = (event) => {
     alert("Enter a city name to get the weather!");
   }
 };
-// DISPLAY TODAY WEATHER
-// getWeather => showWeather
+
+// PAST CITY SEARCHES
+let listCity = () => {
+  citiesList = JSON.parse(localStorage.getItem("citiesList"));
+  if(!citiesList) {
+    citiesList = [];
+  };
+};
+
+// ADD BUTTONS TO SEARCH HISTORY
+let addList = () => {
+  for(var i = 0; i < citiesList.length; i++) {
+    let btn = document.createElement("button");
+    btn.className = "searched-list btn"; // one for identifying as list item, one for styling
+    btn.innerHTML = citiesList[i];
+    buttons.appendChild(btn); // maybe add a clear buttons option in future
+  };
+
+  // USE PAST SEARCH BUTTON
+  let listButtons = document.querySelectorAll(".searched-list");
+  for(var i = 0; i < listButtons.length; i++) {
+    listButtons[i].addEventListener("click", (event) => {
+      getWeather(event.target.textContent);
+      getForecast(event.target.textContent);
+    })
+  }
+};
+
+// TODAY WEATHER
+// Content for central weather feature
+todayDate.textContent = moment()
+  .format("M/DD/YYYY");
+
+// getWeather (API Call) => showWeather
 let showWeather = (weather, searchQuery) => {
   cityEl.textContent = searchQuery;
   iconEl = weather.weather[0].icon;
@@ -130,12 +132,34 @@ let showWeather = (weather, searchQuery) => {
     .innerHTML = weather.wind.speed;
 };
 
-// DISPLAY 5 DAY FORECAST
-// getForecast => showForecast
+// 5 DAY FORECAST
+document.getElementById("day1")
+  .innerHTML = moment()
+  .add(1, "d")
+  .format("M/DD");
+document.getElementById("day2")
+  .innerHTML = moment()
+  .add(2, "d")
+  .format("M/DD");
+document.getElementById("day3")
+  .innerHTML = moment()
+  .add(3, "d")
+  .format("M/DD");
+document.getElementById("day4")
+  .innerHTML = moment()
+  .add(4, "d")
+  .format("M/DD");
+document.getElementById("day5")
+  .innerHTML = moment()
+  .add(5, "d")
+  .format("M/DD");
+
+
+// getForecast (API Call) => showForecast
+// t = today, h = humidity, i = icon, # = day of forecast
+
 let showForecast = (forecast, searchQuery) => {
   cityEl.textContent = searchQuery;
-  // t = today, h = humidity, i = icon, # = day of forecast
-  // pulls morning value for forecast
   // 1 of 5
   document.getElementById("t1")
     .innerHTML = forecast.list[5].main.temp;
@@ -177,25 +201,6 @@ let showForecast = (forecast, searchQuery) => {
   document.getElementById("i5")
     .src = "https://openweathermap.org/img/w/" + iconEl5 + ".png";
   // end 5 day Forecast
-};
-
-// ADD BUTTONS TO SEARCH HISTORY
-let addList = () => {
-  for(var i = 0; i < citiesList.length; i++) {
-    let btn = document.createElement("button");
-    btn.className = "searched-list btn"; // one for identifying as list item, one for styling
-    btn.innerHTML = citiesList[i];
-    buttons.appendChild(btn); // maybe add a clear buttons option in future
-  };
-
-  // USE PAST SEARCH BUTTON
-  let listButtons = document.querySelectorAll(".searched-list");
-  for(var i = 0; i < listButtons.length; i++) {
-    listButtons[i].addEventListener("click", (event) => {
-      getWeather(event.target.textContent);
-      getForecast(event.target.textContent);
-    })
-  }
 };
 
 // LISTEN FOR CITY FORM SUBMISSION
