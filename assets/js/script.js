@@ -156,7 +156,7 @@ document.getElementById("day5")
 
 
 // getForecast (API Call) => showForecast
-// t = today, h = humidity, i = icon, # = day of forecast
+// t = temperature, h = humidity, i = icon,+ # = day in 5 day forecast
 
 let showForecast = (forecast, searchQuery) => {
   cityEl.textContent = searchQuery;
