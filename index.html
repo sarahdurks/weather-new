@@ -11,21 +11,24 @@
   @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
   </style>
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>Open Weather API Application| SarahDurks.Github.io</title>
+  <title>Open Weather API Application | SarahDurks.Github.io</title>
 </head>
 
 <body>
   <div class="wrapper">
     <!--Nav Header-->
     <nav class="navbar">
-      <h1 class="display-4">Weather Dashboard <img width="15%" src="./assets/images/weather.svg"></h1>
+      <h1 class="display-4">Weather Dashboard <img src="./assets/images/weather.svg"></h1>
     </nav>
+
     <!--Main Container Start-->
     <main class="container-fluid">
       <div class="row">
+
         <!--Left Rail-->
         <div class="col-sm-2 card card-search">
-          <h5>Search for a City</h5>
+          <h5>Get the Weather</h5>
+
           <!--Search Form-->
           <div class="input-group">
             <form id="formCity">
@@ -37,7 +40,9 @@
           <div class="btn-group-vertical" id="buttons"></div>
         </div>
         <!--End Left Rail-->
-        <!--Main Container Area-->
+
+        <!--Central Content Area-->
+
         <!--Today's Weather-->
         <div class="col-sm-9" id="weather-today">
           <h3>Today's Weather</h3>
@@ -54,6 +59,7 @@
             </div>
           </div>
           <!--End Today's Weather Section-->
+
           <!--Forecast 5 Day Section-->
           <div class="container" id="forecast5day">
             <h3>5-Day Forecast</h3>

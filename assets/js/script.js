@@ -1,35 +1,41 @@
 
+
+// DEFINE
 let cities = [];
 let cityName = document.querySelector("#searchedCity");
 let todayDate = document.getElementById("todayDate");
 let weatherForm = document.getElementById("formCity");
 let buttons = document.getElementById("buttons");
 let cityInput = document.getElementById("city");
-// Display Today's & Forecast Date
+
+// DATES
 todayDate.textContent = moment().format("M/DD/YYYY");
 document.getElementById("day1").innerHTML = moment().add(1, "d").format("M/DD/YYYY");
 document.getElementById("day2").innerHTML = moment().add(2, "d").format("M/DD/YYYY");
 document.getElementById("day3").innerHTML = moment().add(3, "d").format("M/DD/YYYY");
 document.getElementById("day4").innerHTML = moment().add(4, "d").format("M/DD/YYYY");
 document.getElementById("day5").innerHTML = moment().add(5, "d").format("M/DD/YYYY");
-// populate left rail with history of city search buttons if in local storage
-let pastCities = () => {
+
+// PAST CITY SEARCHES
+let pastCity = () => {
     cities = JSON.parse(localStorage.getItem("cities"));
     if (!cities) {
         cities = [];
     };
 };
-// Get weather for main display
+
+// GET WEATHER FOR TODAY DISPLAY
 // My API Key: 4204bfdd6f4f063ef67429ec56df1142
 let getWeather = (city) => {
-  var apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+  let apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
   fetch(apiUrl1).then(function(response) {
     response.json().then(function(data) {
       showWeather(data, city);
     });
   });
 };
-// Get weather for 5-Day foercast
+
+// GET 5-DAY FORECAST + UV DATA
 let getForecast = (city) => {
   let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
   fetch(apiUrl3).then((response) => {
@@ -56,15 +62,15 @@ let getForecast = (city) => {
     });
   });
 };
-// SUBMIT city search function
+// SUBMIT CITY SEARCH
 let submitQuery = (event) => {
   event.preventDefault();
-  var cityName = cityInput.value.trim();
-  var btn = document.createElement("button");
+  let cityName = cityInput.value.trim();
+  let btn = document.createElement("button");
   btn.className = "button-list btn";
   btn.innerHTML = cityName;
   buttons.appendChild(btn);
-  pastCities();
+  pastCity();
   if(!cities.includes(cityName) && (cityName != "")) {
     cities.push(cityName);
   };
@@ -77,6 +83,7 @@ let submitQuery = (event) => {
     alert("Enter a city name to get the weather!");
   }
 };
+
 // DISPLAY TODAY WEATHER
 let showWeather = (weather, searchQuery) => {
   cityName.textContent = searchQuery;
@@ -86,6 +93,7 @@ let showWeather = (weather, searchQuery) => {
   document.getElementById("todayHumidity").innerHTML = weather.main.humidity;
   document.getElementById("todayWind").innerHTML = weather.wind.speed;
 };
+
 // DISPLAY 5 DAY FORECAST
 let showForecast = (forecast, searchQuery) => {
   cityName.textContent = searchQuery;
@@ -115,15 +123,17 @@ let showForecast = (forecast, searchQuery) => {
   iconEl5 = forecast.list[33].weather[0].icon;
   document.getElementById("i5").src = "https://openweathermap.org/img/w/" + iconEl5 + ".png";
 };
-//past search history requery option
-let addButtonList = () => {
+
+// ADD BUTTONS TO SEARCH HISTORY
+let addList = () => {
   for(var i = 0; i < cities.length; i++) {
     let btn = document.createElement("button");
     btn.className = "button-list btn";
     btn.innerHTML = cities[i];
     buttons.appendChild(btn);
   };
-  //past search history list
+  
+  // USE PAST SEARCH BUTTON
   let cityButtons = document.querySelectorAll(".button-list");
   for(var i = 0; i < cityButtons.length; i++) {
     cityButtons[i].addEventListener("click", (event) => {
@@ -132,9 +142,9 @@ let addButtonList = () => {
     })
   }
 };
-// on submission of form, fire off API calls
+// LISTEN FOR CITY FORM SUBMISSION, SUBMIT TO API
 weatherForm.addEventListener("submit", submitQuery);
-pastCities();
-addButtonList();
+pastCity();
+addList();
 getWeather("Berkeley");
 getForecast("Berkeley");
