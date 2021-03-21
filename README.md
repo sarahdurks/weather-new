@@ -76,6 +76,6 @@ See live application [here]()
 - [Build a Simple Weather App With Vanilla JavaScript](https://webdesign.tutsplus.com/tutorials/build-a-simple-weather-app-with-vanilla-javascript--cms-33893)     
 - [Building a Simple Web App Using a Weather API](https://medium.com/@andrewchandev/weather-api-47a44354b54b)      
 - [Fetch the Weather with OpenWeatherMap API and JavaScript](https://bithacker.dev/fetch-weather-openweathermap-api-javascript)     
-- 
+
 ### Additional Documents & Links 🌧️      
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
