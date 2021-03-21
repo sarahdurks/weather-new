@@ -33,9 +33,8 @@ See live application [here](sarahdurks.github.io/weather-new)
 
 #### Enhancements Pending 🌈
 
-- Adding nice icons
+- Adding nice icons like [this repo offers](https://github.com/isneezy/open-weather-icons)
 - Modal instead of alert for improper input + no blank button display
-- Perfecting Mobile Transition
 - Cool day/night transition
 - Adding additional visuals, like Google SERPs with wind data:        
 <img width="637" alt="Screen Shot 2021-03-14 at 4 46 24 PM" src="https://user-images.githubusercontent.com/77648727/111088525-d66fe780-84e4-11eb-9612-6005682111e1.png">
