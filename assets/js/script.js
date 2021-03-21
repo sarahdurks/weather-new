@@ -116,7 +116,7 @@ let addList = () => {
 // TODAY WEATHER
 // Content for central weather feature
 todayDate.textContent = moment()
-  .format("M/DD/YYYY");
+  .format("dddd, MMMM Do, h:mm a");
 
 // getWeather (API Call) => showWeather
 let showWeather = (weather, searchQuery) => {
