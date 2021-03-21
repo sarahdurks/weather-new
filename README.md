@@ -12,7 +12,7 @@ This application is built fof UCB'S coding bootcamp challenge #6: a weather dash
 
 
 ### Live Application Link 👀
-See live application [here](sarahdurks.github.io/weather-new)
+See live application [here](https://sarahdurks.github.io/weather-new)
 
 
 ### Built With 🧰
