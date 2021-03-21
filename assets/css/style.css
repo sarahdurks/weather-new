@@ -7,6 +7,10 @@
 .navbar {
   margin-bottom: 5vh;
 }
+
+.weather-today {
+  margin-top: 2vh;
+}
 .card {
   background: rgba(15, 11, 11, 0.38);
   border-radius: 15px;
@@ -17,16 +21,15 @@
   margin-right: 2px;
 }
 
-
-
 .card-search {
   margin-left: 4vw;
   margin-right: 3vw;
 }
-img {
-  width: 60px;
 
+img {
+  width: 70px;
 }
+
 .btn {
   background-color: #9A67F9 !important;
   color: white;
@@ -38,9 +41,8 @@ img {
   margin-bottom: 1vh;
 }
 
-
 .p {
-  font-size: x-small
+  font-size: x-small;
 }
 
 h3 {
@@ -54,6 +56,7 @@ h3 {
 
 .todayBlock {
   padding-left: 2vw;
+  margin-bottom: 2vh;
   display: flex;
 }
 
@@ -66,13 +69,14 @@ h3 {
 }
 
 .card-title {
-
   font-size: 1.1rem;
   font-weight: 600;
 }
-#formCity
-{max-width: fit-content;
+
+#formCity {
+  max-width: fit-content;
 }
+
 .card-search {
   min-width: fit-content;
 }
@@ -85,7 +89,138 @@ h3 {
 
 body {
   background:
-     linear-gradient(180deg, #FD986B 0%, #9A67F9 100%) !important;
+    linear-gradient(180deg, #FD986B 0%, #9A67F9 100%) !important;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+p,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+.display-4 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  padding-top: 10px;
+  margin: 0 auto;
+}
+
+/*UV INDEX COLORS */
+.severeLevel {
+  padding: 4px;
+  background-color: rgb(175, 30, 14);
+  color: white;
+  border-radius: 5px;
+}
+
+.moderateLevel {
+  padding: 4px;
+  background-color: goldenrod;
+  border-radius: 5px;
+}
+
+.favorableLevel {
+  padding: 4px;
+  background-color: rgb(21, 147, 21);
+  color: white;
+  border-radius: 5px;
+}
+
+:root {
+  font-family: "Montserrat", sans-serif !important;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navbar {
+  margin-bottom: 5vh;
+}
+
+.card {
+  background: rgba(15, 11, 11, 0.38);
+  border-radius: 15px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vh;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.card-search {
+  margin-left: 4vw;
+  margin-right: 3vw;
+}
+
+img {
+  width: 70px;
+}
+
+.btn {
+  background-color: #9A67F9 !important;
+  color: white;
+  border-radius: 5px;
+  border-color: white;
+  border: 1px;
+  width: fit-content;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.p {
+  font-size: x-small;
+}
+
+h3 {
+  margin-left: 1.2vw;
+  margin-top: 1vh;
+}
+
+.col-sm-2 .card {
+  padding-top: 1vh;
+}
+
+.todayBlock {
+  padding-left: 2vw;
+  margin-bottom: 2vh;
+  display: flex;
+}
+
+.card-title {
+  font-size: .8rem;
+}
+
+.container {
+  width: 90vw;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#formCity {
+  max-width: fit-content;
+}
+
+.card-search {
+  min-width: fit-content;
+}
+
+.card5day {
+  height: fit-content;
+  font-size: .9rem;
+  margin-top: 2vh;
+}
+
+body {
+  background:
+    linear-gradient(180deg, #FD986B 0%, #9A67F9 100%) !important;
   background-repeat: no-repeat;
   height: 100vh;
 }
