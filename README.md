@@ -18,7 +18,7 @@ See live application [here](sarahdurks.github.io/weather-new/)
 ### Built With 🧰
 - [x] HTML
 - [x] Bootstrap / CSS
-- [x] JavasScript
+- [x] JavaScript
 - [x] Moment.js
 - [x] OpenWeatherAPI
 - [x] Google Fonts
