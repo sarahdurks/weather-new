@@ -82,3 +82,4 @@ See live application [here](sarahdurks.github.io/weather-new/)
 ### Additional Documents & Links 🌧️      
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 - [Iconscout SVG resources](https://iconscout.com/)
+- [Code Beautifier](https://beautifier.io/)
