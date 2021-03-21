@@ -135,6 +135,7 @@ let showWeather = (weather, searchQuery) => {
 let showForecast = (forecast, searchQuery) => {
   cityEl.textContent = searchQuery;
   // t = today, h = humidity, i = icon, # = day of forecast
+  // pulls morning value for forecast
   // 1 of 5
   document.getElementById("t1")
     .innerHTML = forecast.list[4].main.temp;
