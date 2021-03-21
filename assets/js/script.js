@@ -44,13 +44,13 @@ let listCity = () => {
 let getWeather = (city) => {
   let apiURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
   fetch(apiURL1)
-    .then(function (response) {
-      response.json()
-        .then(function (data) {
-          // getWeather => showWeather
-          showWeather(data, city);
-        });
-    });
+    .then((response) => {
+        response.json()
+          .then((data) => {
+              // getWeather => showWeather
+              showWeather(data, city);
+            });
+      });
 };
 
 // GET 5-DAY FORECAST + UV DATA
@@ -81,7 +81,7 @@ let getForecast = (city) => {
                     } else if(data.value > 3 && data.value <= 7) {
                       document.getElementById("todayUV")
                         .setAttribute("class", "moderateLevel");
-                    } else {
+                    } else { 
                       document.getElementById("todayUV")
                         .setAttribute("class", "severeLevel");
                     };
@@ -98,9 +98,9 @@ let getForecast = (city) => {
 let submitQuery = (event) => {
   event.preventDefault();
   let cityEl = cityInput.value.trim();
-  let btn = document.createElement("button");
+  let btn = document.createElement("button"); // need to add in no blank button without this breaking
   btn.className = "searched-list btn";
-  btn.innerHTML = cityEl;
+  btn.innerHTML = cityEl; // need to add in no dupe button needed, maybe capitalization standardization
   buttons.appendChild(btn);
   listCity();
   if(!citiesList.includes(cityEl) && (cityEl != "")) {
@@ -121,7 +121,7 @@ let showWeather = (weather, searchQuery) => {
   cityEl.textContent = searchQuery;
   iconEl = weather.weather[0].icon;
   document.getElementById("todayIcon")
-    .src = "https://openweathermap.org/img/w/" + iconEl + ".png";
+    .src = "https://openweathermap.org/img/w/" + iconEl + ".png"; // changeout icon set in future, here and forecast
   document.getElementById("todayTemp")
     .innerHTML = weather.main.temp;
   document.getElementById("todayHumidity")
@@ -185,7 +185,7 @@ let addList = () => {
     let btn = document.createElement("button");
     btn.className = "searched-list btn"; // one for identifying as list item, one for styling
     btn.innerHTML = citiesList[i];
-    buttons.appendChild(btn);
+    buttons.appendChild(btn); // maybe add a clear buttons option in future
   };
 
   // USE PAST SEARCH BUTTON
