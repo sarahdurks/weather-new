@@ -1,10 +1,10 @@
 // DEFINE KEY ITEMS
-let cityInput = document.getElementById("city");
-let cities = []; // build list for local storage in empty array
+let cityInput = document.getElementById("city"); // user input
+let citiesList = []; // build list for local storage in empty array
 let todayDate = document.getElementById("todayDate");
-let weatherForm = document.getElementById("formCity");
+let cityForm = document.getElementById("formCity"); // form for input
 let buttons = document.getElementById("buttons"); // buttons past search
-let cityName = document.querySelector("#searchedCity");
+let cityEl = document.querySelector("#searchedCity"); // city as displayed
 
 // DATES
 // INITIAL DATE
@@ -33,17 +33,17 @@ document.getElementById("day5")
   .format("M/DD");
 // PAST CITY SEARCHES
 let listCity = () => {
-  cities = JSON.parse(localStorage.getItem("cities"));
-  if(!cities) {
-    cities = [];
+  citiesList = JSON.parse(localStorage.getItem("citiesList"));
+  if(!citiesList) {
+    citiesList = [];
   };
 };
 
 // GET WEATHER FOR TODAY DISPLAY
 // My API Key: 4204bfdd6f4f063ef67429ec56df1142
 let getWeather = (city) => {
-  let apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
-  fetch(apiUrl1)
+  let apiURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+  fetch(apiURL1)
     .then(function (response) {
       response.json()
         .then(function (data) {
@@ -55,8 +55,8 @@ let getWeather = (city) => {
 
 // GET 5-DAY FORECAST + UV DATA
 let getForecast = (city) => {
-  let apiUrl3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
-  fetch(apiUrl3)
+  let apiURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=4204bfdd6f4f063ef67429ec56df1142";
+  fetch(apiURL3)
     .then((response) => {
       response.json()
         .then((data) => {
@@ -67,8 +67,8 @@ let getForecast = (city) => {
           let lon = data.city.coord.lon;
           // GET UV DATA BASED ON CITY LAT/LON COORDINATES
           let getTodayUV = (city) => {
-            let apiUrl2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=4204bfdd6f4f063ef67429ec56df1142";
-            fetch(apiUrl2)
+            let apiURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=4204bfdd6f4f063ef67429ec56df1142";
+            fetch(apiURL2)
               .then((response) => {
                 response.json()
                   .then((data) => {
@@ -97,19 +97,19 @@ let getForecast = (city) => {
 // submitQuery => listCity, getWeather, getForecast
 let submitQuery = (event) => {
   event.preventDefault();
-  let cityName = cityInput.value.trim();
+  let cityEl = cityInput.value.trim();
   let btn = document.createElement("button");
-  btn.className = "history-list btn";
-  btn.innerHTML = cityName;
+  btn.className = "searched-list btn";
+  btn.innerHTML = cityEl;
   buttons.appendChild(btn);
   listCity();
-  if(!cities.includes(cityName) && (cityName != "")) {
-    cities.push(cityName);
+  if(!citiesList.includes(cityEl) && (cityEl != "")) {
+    citiesList.push(cityEl);
   };
-  localStorage.setItem("cities", JSON.stringify(cities));
-  if(cityName) {
-    getWeather(cityName);
-    getForecast(cityName);
+  localStorage.setItem("citiesList", JSON.stringify(citiesList));
+  if(cityEl) {
+    getWeather(cityEl);
+    getForecast(cityEl);
     cityInput.value = "";
   } else {
     alert("Enter a city name to get the weather!");
@@ -118,7 +118,7 @@ let submitQuery = (event) => {
 // DISPLAY TODAY WEATHER
 // getWeather => showWeather
 let showWeather = (weather, searchQuery) => {
-  cityName.textContent = searchQuery;
+  cityEl.textContent = searchQuery;
   iconEl = weather.weather[0].icon;
   document.getElementById("todayIcon")
     .src = "https://openweathermap.org/img/w/" + iconEl + ".png";
@@ -133,45 +133,46 @@ let showWeather = (weather, searchQuery) => {
 // DISPLAY 5 DAY FORECAST
 // getForecast => showForecast
 let showForecast = (forecast, searchQuery) => {
-  cityName.textContent = searchQuery;
+  cityEl.textContent = searchQuery;
+  // t = today, h = humidity, i = icon, # = day of forecast
   // 1 of 5
   document.getElementById("t1")
-    .innerHTML = forecast.list[1].main.temp;
+    .innerHTML = forecast.list[4].main.temp;
   document.getElementById("h1")
-    .innerHTML = forecast.list[1].main.humidity;
-  iconEl1 = forecast.list[1].weather[0].icon;
+    .innerHTML = forecast.list[4].main.humidity;
+  iconEl1 = forecast.list[4].weather[0].icon;
   document.getElementById("i1")
     .src = "https://openweathermap.org/img/w/" + iconEl1 + ".png";
   // 2 of 5
   document.getElementById("t2")
-    .innerHTML = forecast.list[9].main.temp;
+    .innerHTML = forecast.list[12].main.temp;
   document.getElementById("h2")
-    .innerHTML = forecast.list[9].main.humidity;
-  iconEl2 = forecast.list[9].weather[0].icon;
+    .innerHTML = forecast.list[12].main.humidity;
+  iconEl2 = forecast.list[12].weather[0].icon;
   document.getElementById("i2")
     .src = "https://openweathermap.org/img/w/" + iconEl2 + ".png";
   // 3 of 5
   document.getElementById("t3")
-    .innerHTML = forecast.list[17].main.temp;
+    .innerHTML = forecast.list[20].main.temp;
   document.getElementById("h3")
-    .innerHTML = forecast.list[17].main.humidity;
-  iconEl3 = forecast.list[17].weather[0].icon;
+    .innerHTML = forecast.list[20].main.humidity;
+  iconEl3 = forecast.list[20].weather[0].icon;
   document.getElementById("i3")
     .src = "https://openweathermap.org/img/w/" + iconEl3 + ".png";
   // 4 of 5
   document.getElementById("t4")
-    .innerHTML = forecast.list[25].main.temp;
+    .innerHTML = forecast.list[28].main.temp;
   document.getElementById("h4")
-    .innerHTML = forecast.list[25].main.humidity;
-  iconEl4 = forecast.list[25].weather[0].icon;
+    .innerHTML = forecast.list[28].main.humidity;
+  iconEl4 = forecast.list[28].weather[0].icon;
   document.getElementById("i4")
     .src = "https://openweathermap.org/img/w/" + iconEl4 + ".png";
   // 5 of 5
   document.getElementById("t5")
-    .innerHTML = forecast.list[33].main.temp;
+    .innerHTML = forecast.list[36].main.temp;
   document.getElementById("h5")
-    .innerHTML = forecast.list[33].main.humidity;
-  iconEl5 = forecast.list[33].weather[0].icon;
+    .innerHTML = forecast.list[36].main.humidity;
+  iconEl5 = forecast.list[36].weather[0].icon;
   document.getElementById("i5")
     .src = "https://openweathermap.org/img/w/" + iconEl5 + ".png";
   // end 5 day Forecast
@@ -179,15 +180,15 @@ let showForecast = (forecast, searchQuery) => {
 
 // ADD BUTTONS TO SEARCH HISTORY
 let addList = () => {
-  for(var i = 0; i < cities.length; i++) {
+  for(var i = 0; i < citiesList.length; i++) {
     let btn = document.createElement("button");
-    btn.className = "history-list btn"; // one for identifying as list item, one for styling
-    btn.innerHTML = cities[i];
+    btn.className = "searched-list btn"; // one for identifying as list item, one for styling
+    btn.innerHTML = citiesList[i];
     buttons.appendChild(btn);
   };
 
   // USE PAST SEARCH BUTTON
-  let listButtons = document.querySelectorAll(".history-list");
+  let listButtons = document.querySelectorAll(".searched-list");
   for(var i = 0; i < listButtons.length; i++) {
     listButtons[i].addEventListener("click", (event) => {
       getWeather(event.target.textContent);
@@ -198,7 +199,7 @@ let addList = () => {
 
 // LISTEN FOR CITY FORM SUBMISSION
 // listen => submitQuery
-weatherForm.addEventListener("submit", submitQuery);
+cityForm.addEventListener("submit", submitQuery);
 listCity();
 addList();
 
