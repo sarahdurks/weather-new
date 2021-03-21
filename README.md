@@ -1,4 +1,5 @@
-![fixedheader](https://user-images.githubusercontent.com/77648727/111896116-83120380-89d4-11eb-8ae1-2f2855f91b56.png)
+![Frame 22](https://user-images.githubusercontent.com/77648727/111896169-c4a2ae80-89d4-11eb-8355-2e6867aba7af.png)
+
 
 
 ## Name
@@ -11,7 +12,7 @@ This application is built fof UCB'S coding bootcamp challenge #6: a weather dash
 
 
 ### Live Application Link 👀
-See live application [here](sarahdurks.github.io/weather-new)
+See live application [here](sarahdurks.github.io/weather-new/)
 
 
 ### Built With 🧰
