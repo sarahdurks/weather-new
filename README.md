@@ -65,7 +65,8 @@ See live application [here](https://sarahdurks.github.io/weather-new)
 ![weather](https://user-images.githubusercontent.com/77648727/110256886-1ddbfe00-7f50-11eb-9cbf-41daa0a55010.png)
 
 #### Project Execution:   
-<img width="1435" alt="Screen Shot 2021-03-21 at 7 55 44 PM" src="https://user-images.githubusercontent.com/77648727/111934878-8adab200-8a7f-11eb-9f0e-9a81acc2957f.png">
+<img width="1391" alt="Screen Shot 2021-03-22 at 4 12 34 PM" src="https://user-images.githubusercontent.com/77648727/112069749-9bdffd80-8b29-11eb-9ffe-b5169cb76cdb.png">
+
 
 
 
