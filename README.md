@@ -29,11 +29,11 @@ See live application [here](https://sarahdurks.github.io/weather-new)
 - Recent searches are stored and a user can again select a past search to see current information
 - The application is reponsive with Bootstrap
 - Color coding and icons make the application data easier to interpret
+- Added nice icons
 
 
 #### Enhancements Pending 🌈
 - Need to note when a city entry is invalid - stays on past search
-- Adding nice icons like [this repo offers](https://github.com/isneezy/open-weather-icons)
 - Modal instead of alert for improper input + no blank button display
 - Cool day/night transition
 - Adding additional visuals, like Google SERPs with wind data:        
@@ -65,7 +65,8 @@ See live application [here](https://sarahdurks.github.io/weather-new)
 ![weather](https://user-images.githubusercontent.com/77648727/110256886-1ddbfe00-7f50-11eb-9cbf-41daa0a55010.png)
 
 #### Project Execution:   
-<img width="1133" alt="Screen Shot 2021-03-21 at 1 16 53 PM" src="https://user-images.githubusercontent.com/77648727/111919542-cc4f6b00-8a47-11eb-944d-84cd6faf0544.png">
+<img width="1435" alt="Screen Shot 2021-03-21 at 7 55 44 PM" src="https://user-images.githubusercontent.com/77648727/111934878-8adab200-8a7f-11eb-9f0e-9a81acc2957f.png">
+
 
 
 ## Acknowledgement, & Resources 🤝
@@ -82,3 +83,5 @@ See live application [here](https://sarahdurks.github.io/weather-new)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 - [Iconscout SVG resources](https://iconscout.com/)
 - [Code Beautifier](https://beautifier.io/)
+- [Open Weather Alternative Icons Repo](https://github.com/yuvraaaj/openweathermap-api-icons) - allowed using weather API code re: icon, but for a different icon via premade file structure & png naming conventions!!
+
