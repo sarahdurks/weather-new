@@ -6,6 +6,7 @@
 
 .navbar {
   margin-bottom: 5vh;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .weather-today {
@@ -22,7 +23,7 @@
 }
 
 .card-search {
-  margin-left: 4vw;
+  margin-left: 3vw;
   margin-right: 3vw;
 }
 
@@ -31,9 +32,12 @@ img {
 }
 
 .btn {
-  background-color: #b2afb4 !important;
+  background-color: #989599 !important;
   color: white;
   border-radius: 5px;
+  font-family:   "Montserrat", sans-serif !important;
+  font-size: smaller;
+  font-weight: bold;
   border-color: white;
   border: 2px;
   width: fit-content;
@@ -44,11 +48,13 @@ img {
 p {
   font-size: small;
   line-height: 1em;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 h3 {
-  margin-left: 1.2vw;
+  margin-left: 1vw;
   margin-top: 1vh;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .col-sm-2 .card {
@@ -56,26 +62,23 @@ h3 {
 }
 
 .todayBlock {
-  padding-left: 2vw;
   margin-bottom: 2vh;
   display: flex;
 }
 
 .card-title {
   font-size: .8rem;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .container {
   width: 90vw;
 }
 
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
 
 #formCity {
   max-width: fit-content;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .card-search {
@@ -99,8 +102,12 @@ h4,
 h5,
 h6 {
   color: white;
+  font-family: "Montserrat", sans-serif !important;
 }
 
+h5, h6 {
+  font-weight: 900;
+}
 .display-4 {
   color: #ffffff;
   text-align: center;
@@ -108,6 +115,7 @@ h6 {
   font-weight: 600;
   padding-top: 10px;
   margin: 0 auto;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 /*UV INDEX COLORS */
@@ -115,12 +123,14 @@ h6 {
   padding: 4px;
   background-color: rgb(175, 30, 14);
   color: white;
+  font-weight: 900;
   border-radius: 5px;
 }
 
 .moderateLevel {
   padding: 4px;
   background-color: goldenrod;
+  font-weight: 900;
   border-radius: 5px;
 }
 
@@ -128,6 +138,7 @@ h6 {
   padding: 4px;
   background-color: rgb(21, 147, 21);
   color: white;
+  font-weight: 900;
   border-radius: 5px;
 }
 
