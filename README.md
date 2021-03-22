@@ -32,7 +32,7 @@ See live application [here](https://sarahdurks.github.io/weather-new)
 
 
 #### Enhancements Pending 🌈
-
+- Need to note when a city entry is invalid - stays on past search
 - Adding nice icons like [this repo offers](https://github.com/isneezy/open-weather-icons)
 - Modal instead of alert for improper input + no blank button display
 - Cool day/night transition
