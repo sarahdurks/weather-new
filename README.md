@@ -8,7 +8,7 @@
 
 ![challenge](https://user-images.githubusercontent.com/77648727/110256831-dc4b5300-7f4f-11eb-89e6-348b41416871.png)       
 
-This application is built fof UCB'S coding bootcamp challenge #6: a weather dashboard that runs in the browser and features dynamically updated HTML and CSS. It leverages the OpenWeather API for data.
+This application is built fof UCB'S coding bootcamp challenge #6: a weather dashboard that runs in the browser and features dynamically updated HTML and CSS. It leverages the Open Weather API for data.
 
 
 ### Live Application Link 👀
