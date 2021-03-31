@@ -4,7 +4,7 @@
 
 ## Name
 
-### Weather Dashboard ⛈️
+### Weather Dashboard ⛈️ 
 
 ![challenge](https://user-images.githubusercontent.com/77648727/110256831-dc4b5300-7f4f-11eb-89e6-348b41416871.png)       
 
